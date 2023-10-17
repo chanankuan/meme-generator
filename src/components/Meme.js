@@ -1,17 +1,20 @@
-import { useState, useEffect } from "react";
-import "../assets/styles/Meme.css";
+import { useState, useEffect, useRef } from 'react';
+import { downloadMeme } from '../downloadMeme';
+import '../assets/styles/Meme.css';
 
 export default function Meme() {
   const [allMemes, setAllMemes] = useState([]);
   const [meme, setMeme] = useState({
-    topText: "",
-    bottomText: "",
-    randomImage: "https://i.imgflip.com/1bij.jpg",
+    topText: '',
+    bottomText: '',
+    randomImage: 'https://i.imgflip.com/1bij.jpg',
   });
+
+  const imageRef = useRef(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("https://api.imgflip.com/get_memes");
+      const res = await fetch('https://api.imgflip.com/get_memes');
       const data = await res.json();
       setAllMemes(data.data.memes);
     };
@@ -60,10 +63,23 @@ export default function Meme() {
         </button>
       </div>
       <div className="content">
-        <img className="content--image" src={meme.randomImage} alt="" />
+        <img
+          className="content--image"
+          src={meme.randomImage}
+          ref={imageRef}
+          alt=""
+          crossOrigin="anonymous"
+        />
         <h2 className="meme--text top">{meme.topText}</h2>
         <h2 className="meme--text bottom">{meme.bottomText}</h2>
       </div>
+
+      <button
+        className="download--button"
+        onClick={() => downloadMeme(imageRef, meme)}
+      >
+        Download Meme
+      </button>
     </main>
   );
 }
