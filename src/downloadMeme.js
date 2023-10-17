@@ -4,7 +4,7 @@ export function downloadMeme(imageRef, meme) {
   canvas.width = imageRef.current.naturalWidth;
   canvas.height = imageRef.current.naturalHeight;
 
-  ctx.font = `${canvas.width / 8}px impact`;
+  ctx.font = `${canvas.width / 10}px impact`;
   ctx.fillStyle = 'white';
   ctx.textAlign = 'center';
   // Set shadow properties
@@ -14,7 +14,7 @@ export function downloadMeme(imageRef, meme) {
 
   ctx.drawImage(imageRef.current, 0, 0);
   ctx.fontVariantCaps = 'all-petite-caps';
-  ctx.fillText(meme.topText, canvas.width / 2, canvas.width / 8); // Adjust the position as needed
+  ctx.fillText(meme.topText, canvas.width / 2, canvas.width / 8.5); // Adjust the position as needed
   ctx.fillText(
     meme.bottomText,
     canvas.width / 2,
