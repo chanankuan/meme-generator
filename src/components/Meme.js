@@ -36,8 +36,6 @@ export default function Meme() {
     }));
   }
 
-  console.log(meme);
-
   return (
     <main>
       <div className="form">
