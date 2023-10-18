@@ -34,6 +34,7 @@ main {
   display: flex;
   justify-content: center;
   margin-bottom: 36px;
+  height: 300px;
 }
 
 .content--image {
